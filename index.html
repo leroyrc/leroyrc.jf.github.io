@@ -1,0 +1,118 @@
+<HTML>
+	<HEAD>
+	<TITLE>Jogo da Forca</TITLE>
+	<META charset="utf-8">
+	<SCRIPT LANGUAGE="JavaScript">
+		forca = new Array("--------\n|      |\n|\n|\n|\n|\n=====",
+		"--------\n|      O\n|\n|\n|\n|\n=====",
+		"--------\n|      O\n|      |\n|\n|\n|\n=====",
+		"--------\n|      O\n|     \\|\n|\n|\n|\n=====",
+		"--------\n|      O\n|     \\|/\n|\n|\n|\n=====",
+		"--------\n|      O\n|     \\|/\n|      |\n|\n|\n=====",
+		"--------\n|      O\n|     \\|/\n|      |\n|     /\n|\n=====",
+		"--------\n|      O\n|     \\|/\n|      |\n|     / \\\n|\n=====")
+		escolhachute = new
+	Array("Fortnite","Counterstrike","Warcraft","Tibia")
+	function restartar() {
+ 		chutes = 0
+ 		max = forca.length-1
+ 		chutado = " "
+ 		len = escolhachute.length - 1
+ 		tentar = escolhachute[Math.round(len*Math.random())].toUpperCase()
+	 displayforca()
+ 	displaytentativa()
+ 	displaychutado()
+	}
+	function stayAway() {
+ 		document.game.elements[3].focus()
+ 		alert("error")
+	}
+	function displayforca() {
+ 		document.game.status.value=forca[chutes]
+	}
+	function displaytentativa() {
+ 		pattern=""
+		 for(i=0;i<tentar.length;++i) {
+  		if(chutado.indexOf(tentar.charAt(i)) != -1)
+  			 pattern += (tentar.charAt(i)+" ")
+  		else pattern += "_ "
+ 	}
+ 		document.game.tentar.value=pattern
+	}
+	function displaychutado() {
+ 		document.game.chutado.value=chutado
+	}
+	function tentativaerrada(s) {
+		 if(tentar.indexOf(s) == -1) return true
+ 		return false
+	}
+	function ganhador() {
+ 		for(i=0;i<tentar.length;++i) {
+  		if(chutado.indexOf(tentar.charAt(i)) == -1) return false
+	 }
+ return true
+	}
+	function chut(s){
+ 		if(chutado.indexOf(s) == -1) chutado = s + chutado
+ 		if(tentativaerrada(s)) ++chutes
+ 	displayforca()
+	 displaytentativa()
+ 	displaychutado()
+ 		if(chutes >= max){
+ 		alert("Voce Perdeu! a palavra era: "+tentar+".")
+  	restartar()
+	 }
+ 		if(ganhador()) {
+ 		 alert("Voce Venceu!")
+  restartar()
+ }
+}
+	</SCRIPT>
+</HEAD>
+<BODY>
+	<H1>Jogo da Forca</H1>
+	<H2>Dica: Nomes de Games</H2>
+	<FORM NAME="game">
+	<PRE>
+	<TEXTAREA NAME="status" ROWS="7" COLS="16"
+	 ONFOCUS="stayAway()"></TEXTAREA>
+	</PRE><P>
+	<INPUT TYPE="TEXT" NAME="tentar"
+	 ONFOCUS="stayAway()"> Palavra<BR>
+	<INPUT TYPE="TEXT" NAME="chutado"
+ 	ONFOCUS="stayAway()"> Letras Invalidas<BR>
+	<P>Proxima Tentativa</P>
+	<INPUT TYPE="BUTTON" VALUE=" A " ONCLICK="chut('A')">
+	<INPUT TYPE="BUTTON" VALUE=" B " ONCLICK="chut('B')">
+	<INPUT TYPE="BUTTON" VALUE=" C " ONCLICK="chut('C')">
+	<INPUT TYPE="BUTTON" VALUE=" D " ONCLICK="chut('D')">
+	<INPUT TYPE="BUTTON" VALUE=" E " ONCLICK="chut('E')">
+	<INPUT TYPE="BUTTON" VALUE=" F " ONCLICK="chut('F')">
+	<INPUT TYPE="BUTTON" VALUE=" G " ONCLICK="chut('G')">
+	<INPUT TYPE="BUTTON" VALUE=" H " ONCLICK="chut('H')">
+	<INPUT TYPE="BUTTON" VALUE=" I " ONCLICK="chut('I')">
+	<INPUT TYPE="BUTTON" VALUE=" J " ONCLICK="chut('J')">
+	<INPUT TYPE="BUTTON" VALUE=" K " ONCLICK="chut('K')">
+	<INPUT TYPE="BUTTON" VALUE=" L " ONCLICK="chut('L')">
+	<INPUT TYPE="BUTTON" VALUE=" M " ONCLICK="chut('M')">
+	<INPUT TYPE="BUTTON" VALUE=" N " ONCLICK="chut('N')">
+	<INPUT TYPE="BUTTON" VALUE=" O " ONCLICK="chut('O')">
+	<INPUT TYPE="BUTTON" VALUE=" P " ONCLICK="chut('P')">
+	<INPUT TYPE="BUTTON" VALUE=" Q " ONCLICK="chut('Q')">
+	<INPUT TYPE="BUTTON" VALUE=" R " ONCLICK="chut('R')">
+	<INPUT TYPE="BUTTON" VALUE=" S " ONCLICK="chut('S')">
+	<INPUT TYPE="BUTTON" VALUE=" T " ONCLICK="chut('T')">
+	<INPUT TYPE="BUTTON" VALUE=" U " ONCLICK="chut('U')">
+	<INPUT TYPE="BUTTON" VALUE=" V " ONCLICK="chut('V')">
+	<INPUT TYPE="BUTTON" VALUE=" W " ONCLICK="chut('W')">
+	<INPUT TYPE="BUTTON" VALUE=" X " ONCLICK="chut('X')">
+	<INPUT TYPE="BUTTON" VALUE=" Y " ONCLICK="chut('Y')">
+	<INPUT TYPE="BUTTON" VALUE=" Z " ONCLICK="chut('Z')"><P>
+	<INPUT TYPE="BUTTON" NAME="restart" VALUE="---- Jogar Denovo----"
+ 	ONCLICK="restartar()">
+<SCRIPT LANGUAGE="JavaScript">
+restartar()
+</SCRIPT>
+</FORM>
+</BODY>
+</HTML>
